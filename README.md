@@ -8,50 +8,53 @@ It includes ready-to-use configurations for backend &amp; frontend integration, 
 - d - docker
 - a0 - auth0
 
-## Prerequist
+## Prerequisites
 - Docker
 - Node
 
-## Steps to run
+## Steps to Run DB, API and Client
 
+### Steps to run PSQL DB
+- Open new terminal
 - In root directory, run database container.
 ```bash
 docker compose up starter_db
 ```
 
+### Steps to run Migration
+- Open new terminal
 - Uncomment following line in docker-compose.yml
 ```bash
 # command: go run ./cmd/migrate
 ```
-
-- Run following command to run migration.
+- Run following command.
 ```bash
 docker compose up starter_api
 ```
 
+### Steps to run API Server
+- Open new terminal
 - Comment back following line in docker-compose.yml
 ```bash
 command: go run ./cmd/migrate
 ```
-
 - Run following command to start api server.
 ```bash
 docker compose up starter_api
 ```
 
+### Steps to run Web Client
 - Open new terminal
-
 - Change directory to web.
-
 - Install Dependencies.
 ```bash
 npm i
 ```
-
 - run client.
 ```bash
 npm run start
 ```
 
-- API will be running at localhost:9090
-- Web app will be running at localhost:5173
+## Running PORTS
+- API will be running at port 9090
+- Web app will be running at port 5173
