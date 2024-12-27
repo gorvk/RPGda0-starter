@@ -9,7 +9,7 @@ createRoot(document.getElementById("root") as HTMLElement).render(
     domain={`${process.env.AUTH0_DOMAIN}`}
     clientId={`${process.env.AUTH0_CLIENT_ID}`}
     authorizationParams={{
-      redirect_uri: window.location.origin + '/dashboard',
+      redirect_uri: window.location.origin + '/protected',
     }}
   >
     <Provider store={store}>

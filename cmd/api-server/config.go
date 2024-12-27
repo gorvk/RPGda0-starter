@@ -6,6 +6,7 @@ import (
 	"os"
 )
 
+// configuring server
 func configureServer() *http.Server {
 	fmt.Println("Configuring Server...")
 

@@ -1,9 +1,3 @@
-export type TodoData = {
-    id: string;
-    title: string;
-    isCompleted: boolean;
-}
-
 export type CommonResponse = {
     isSuccess: boolean;
     result: any;
@@ -22,4 +16,8 @@ export type Profile = {
     phone_number?: string;
     phone_number_verified?: boolean;
     updated_at?: string;
+}
+
+export type Data = {
+    id: string;
 }

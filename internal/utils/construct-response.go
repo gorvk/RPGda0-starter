@@ -3,11 +3,11 @@ package utils
 import (
 	"encoding/json"
 
-	"github.com/gorvk/todoapp/internal/types"
+	"github.com/gorvk/starterapp/internal/types"
 )
 
 func ConstructResponse(isSuccess bool, result any) ([]byte, error) {
-	response := types.TODO_RESPONSE_PARAMETERS{
+	response := types.DATA_RESPONSE_PARAMETERS{
 		RESPONSE_COMMON_PARAMETERS: types.RESPONSE_COMMON_PARAMETERS{
 			IsSuccess: isSuccess,
 		},

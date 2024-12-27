@@ -5,7 +5,7 @@ import (
 	"os"
 
 	"github.com/coreos/go-oidc/v3/oidc"
-	"github.com/gorvk/todoapp/internal/types"
+	"github.com/gorvk/starterapp/internal/types"
 	"golang.org/x/oauth2"
 )
 

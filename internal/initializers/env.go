@@ -12,7 +12,7 @@ func LoadEnv() {
 	err := godotenv.Load()
 	if err != nil {
 		fmt.Printf("Failed to load Environment Variables!")
-		panic(err)
+		// panic(err)
 	}
 	fmt.Println("Environment Variables Loaded!")
 }

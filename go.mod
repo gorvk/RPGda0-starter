@@ -1,4 +1,4 @@
-module github.com/gorvk/todoapp
+module github.com/gorvk/starterapp
 
 go 1.23
 

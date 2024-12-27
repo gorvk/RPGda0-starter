@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/gorvk/todoapp/internal/initializers"
+	"github.com/gorvk/starterapp/internal/initializers"
 )
 
 func main() {

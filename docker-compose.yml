@@ -1,5 +1,5 @@
 services:
-  todo_api:
+  starter_api:
     build: .
     environment:
       - DB_CONNECTION_STRING=${DB_CONNECTION_STRING}
@@ -17,12 +17,12 @@ services:
     ports:
       - ${API_PORT}:9090
     depends_on:
-      - todo_db
+      - starter_db
     volumes:
       - ./:/app
     # command: go run ./cmd/migrate
 
-  todo_db:
+  starter_db:
     image: postgres:16.2
     environment:
       - POSTGRES_USER=${DB_USER}

@@ -5,40 +5,38 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/gorvk/todoapp/internal/initializers"
-	models "github.com/gorvk/todoapp/internal/models/todo"
-	"github.com/gorvk/todoapp/internal/types"
+	"github.com/gorvk/starterapp/internal/initializers"
+	models "github.com/gorvk/starterapp/internal/models/data"
+	"github.com/gorvk/starterapp/internal/types"
 )
 
 func GetAll(w http.ResponseWriter, r *http.Request) {
 	auth := initializers.GetAuthInstance()
-	idToken := r.Header.Get("Authorization")
-	_, err := auth.VerifyIDToken(r.Context(), idToken)
-	fmt.Println(idToken)
+	userClaim, err := auth.VerifyIDToken(r)
 	if err != nil {
+		http.Error(w, err.Error(), http.StatusUnauthorized)
+		return
+	}
+
+	rows, err := models.GetAll(userClaim)
+	if err != nil {
+		fmt.Println("response")
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
 
-	rows, err := models.GetAll()
-	if err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
-		return
-	}
-
-	todos := []types.Todo{}
+	data := []types.Data{}
 	defer rows.Close()
 	for rows.Next() {
-		row := types.Todo{}
+		row := types.Data{}
 		rows.Scan(
 			&row.Id,
-			&row.Title,
-			&row.IsCompleted,
+			&row.UserId,
 		)
-		todos = append(todos, row)
+		data = append(data, row)
 	}
 
-	response, err := json.Marshal(todos)
+	response, err := json.Marshal(data)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 	}
