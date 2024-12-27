@@ -11,8 +11,15 @@ It includes ready-to-use configurations for backend &amp; frontend integration, 
 ## Prerequisites
 - Docker
 - Node
+- Auth0 Account with required values in .env
 
 ## Steps to Run DB, API and Client
+
+### create environment files
+- In root folder create .env file
+- Add variables from env.example in .env file and assign required values from your Auth0 account and preffered DB user and password.
+- Navigate to web folder and create .env file
+- Add variables from env.example in web to .env file and assign required values from your Auth0 account running API url (if it is running locally then it will http://localhost:9090).
 
 ### Steps to run PSQL DB
 - Open new terminal
