@@ -7,6 +7,9 @@ It includes ready-to-use configurations for backend &amp; frontend integration, 
 - G - golang
 - d - docker
 - a0 - auth0
+<br/>
+
+![chrome-capture-2024-12-28](https://github.com/user-attachments/assets/3806750c-780e-4db3-907f-7d4380ce4519)
 
 ## Prerequisites
 - Docker
