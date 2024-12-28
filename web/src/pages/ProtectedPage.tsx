@@ -3,14 +3,24 @@ import { Link } from "react-router-dom";
 import { addData, getAllData } from "../svc/data";
 import { Data } from "../models/types";
 import "../styles.css";
+import { useSelector } from "react-redux";
+import { AppState } from "../state/store";
+import { useAuth0 } from "@auth0/auth0-react";
 
 export const ProtectedPage = () => {
   const [data, setData] = useState<Data[]>([]);
   const inputRef = useRef<HTMLInputElement>(null);
+  const currentUser = useSelector((state: AppState) => state.currentUser);
+  const { logout } = useAuth0();
 
   useEffect(() => {
     getData();
   }, []);
+
+  const logoutUser = async () => {
+    localStorage.removeItem("id_token");
+    logout({ logoutParams: { returnTo: window.location.origin } });
+  };
 
   const submitData = async () => {
     if (inputRef.current && inputRef.current.value) {
@@ -31,6 +41,14 @@ export const ProtectedPage = () => {
   return (
     <div className="m-4">
       <div>
+        <div className="flex gap-4 items-center my-2">
+          <p>
+            {currentUser?.nickname} - {currentUser?.name}
+          </p>
+          <button className="btn" onClick={logoutUser}>
+            Logout
+          </button>
+        </div>
         <div className="text-2xl">
           This is a protected page and cannot be accessed without login
         </div>
